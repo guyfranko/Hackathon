@@ -87,7 +87,7 @@ class Server:
                     player.sendall((closeMsg % (self.result, winner)).encode())
                     player.close()
                 except:
-                    pass
+                    player.close()
         else:
             print("Not enough players!")
 
