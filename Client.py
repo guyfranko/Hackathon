@@ -54,21 +54,21 @@ class Client:
         self.socketClientTCP = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     def RunGame(self):
-        teads = multiprocessing.Process(target=self.getResult)
-        teads.start()
-        teads.join(10)
-        if teads.is_alive():
-            teads.terminate()
+        treads = multiprocessing.Process(target=self.getResult).decode()
+        treads.start()
+        treads.join(10)
+        if treads.is_alive():
+            treads.terminate()
         self.socketClientTCP.settimeout(2.5)
-        data = None
+        msg = None
         try:
-            data = self.socketClientTCP.recv(1024)
+            msg = self.socketClientTCP.recv(1024)
         except:
             pass
-        if data is None:
+        if not msg:
             print("GameOver Message.")
         else:
-            print(data.decode())
+            print(msg)
 
     def getResult(self):
         stop_time = time.time() + 10
