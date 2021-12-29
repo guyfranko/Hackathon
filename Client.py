@@ -6,7 +6,7 @@ import getch
 
 
 class Client:
-    def _init_(self, TEST):
+    def __init__(self, TEST):
         self.teamName = "DG-hac"
         self.socketClientUDP = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         self.socketClientUDP.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
